@@ -9,7 +9,7 @@ const Header = () => {
       <Logo src={promptLogo} alt="PromptMage Logo" /> {/* Update the logo path */}
       <NavMenu>
         <NavItem href="#">Login</NavItem>
-        <NavItem href="#">Sign Up</NavItem>
+        <SignUpItem href="#">Sign Up</SignUpItem> {/* Updated */}
       </NavMenu>
     </Nav>
   );
@@ -32,14 +32,30 @@ const NavMenu = styled.div`
   gap: 1rem;
 `;
 
-const NavItem = styled.a`
+const Button = styled.a`
   color: #fff;
   text-decoration: none;
-  padding: 0.5rem 1rem;
-  background-color: #3c3b8b;
-  border-radius: 5px;
+  padding: 0.5rem 1.5rem;
+  border-radius: 25px;
+  font-size: 1rem;
+  transition: background-color 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+
+const NavItem = styled(Button)`
+  background-color: #28a745;
   &:hover {
-    background-color: #5a59a8;
+    background-color: #218838;
+  }
+`;
+
+const SignUpItem = styled(Button)`
+  background-color: transparent; /* New color for Sign Up */
+  border: 2px solid #fff; /* White border */
+  &:hover {
+    background-color: #5a59a8; /* New hover color for Sign Up */
   }
 `;
 
