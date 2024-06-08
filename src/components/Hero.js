@@ -1,7 +1,7 @@
 // src/components/Hero.js
 import React from 'react';
 import styled from 'styled-components';
-import robotImage from '../assets/images/her.png'; // Ensure this image path is correct
+import robotImage from '../assets/images/her_img.png'; // Ensure this image path is correct
 import { flicker } from '../styles/GlobalStyles'; // Import the flicker animation
 
 const Hero = () => {
@@ -111,7 +111,7 @@ const ImageContainer = styled.div`
 `;
 
 const HeroImage = styled.img`
-  max-width: 75%; /* Adjust this value to reduce the gap */
+  max-width: 80%; /* Adjust this value to reduce the gap */
   height: auto;
   animation: ${flicker} 1.5s infinite; /* Apply the flicker animation */
 `;
