@@ -1,12 +1,19 @@
 // src/components/Header.js
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import promptLogo from '../assets/images/prompt.png';
 
 const Header = () => {
+  const navigate = useNavigate();
+
+  const handleLogoClick = () => {
+    navigate('/');
+  };
+
   return (
     <Nav>
-      <Logo src={promptLogo} alt="PromptMage Logo" /> {/* Update the logo path */}
+      <Logo src={promptLogo} alt="PromptMage Logo" onClick={handleLogoClick} /> {/* Update the logo path */}
       <NavMenu>
         <NavItem href="#">Login</NavItem>
         <SignUpItem href="#">Sign Up</SignUpItem> {/* Updated */}
@@ -25,6 +32,7 @@ const Nav = styled.nav`
 
 const Logo = styled.img`
   height: 90px; /* Adjust as needed */
+  cursor: pointer; /* Add pointer cursor */
 `;
 
 const NavMenu = styled.div`

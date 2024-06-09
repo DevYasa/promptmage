@@ -4,8 +4,8 @@ import { createGlobalStyle, keyframes } from 'styled-components';
 // Define the keyframes for the flicker animation
 const flicker = keyframes`
   0%, 100% { opacity: 1; transform: translateY(0); }
-  50% { opacity: 0.8; transform: translateY(-2px); }
-  25%, 75% { opacity: 0.9; transform: translateY(1px); }
+  50% { opacity: 0.6; transform: translateY(-2px); }
+  25%, 75% { opacity: 0.8; transform: translateY(1px); }
 `;
 
 const GlobalStyles = createGlobalStyle`

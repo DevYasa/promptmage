@@ -2,13 +2,19 @@
 import React from 'react';
 import styled from 'styled-components';
 import previewImage from '../assets/images/ai_gen.png'; // Ensure this image path is correct
+import Typewriter from '../components/TypeWriter';
 
 const GeneratePage = () => {
   return (
     <PageContainer>
       <Title>Generate Your Image</Title>
       <Form>
-        <TextField type="text" placeholder="Enter your text here..." />
+        <TextFieldContainer>
+          <TypewriterText>
+            <Typewriter text="Enter your text here..." />
+          </TypewriterText>
+          <TextField type="text" />
+        </TextFieldContainer>
         <PreviewBox>
           <PreviewImage src={previewImage} alt="Preview" />
         </PreviewBox>
@@ -30,7 +36,7 @@ const PageContainer = styled.div`
 `;
 
 const Title = styled.h1`
-  font-size: 3rem;
+  font-size: 2.8rem;
   margin-bottom: 2rem;
   font-family: 'Poppins', sans-serif;
 `;
@@ -43,27 +49,39 @@ const Form = styled.form`
   max-width: 600px;
 `;
 
+const TextFieldContainer = styled.div`
+  position: relative;
+  width: 70%;
+  margin-bottom: 2rem;
+  margin-left: -30px;
+`;
+
+const TypewriterText = styled.div`
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  color: #fff;
+  font-size: 1rem;
+`;
+
 const TextField = styled.input`
-  padding: 0.8rem;
+  padding: 1rem;
   font-size: 1rem;
   border: 2px solid #fff;
   border-radius: 25px;
   background: transparent;
   color: #fff;
-  width: 70%;
-  margin-bottom: 2rem;
+  width: 100%;
   text-align: center;
-
-  &::placeholder {
-    color: #fff;
-  }
 `;
 
 const PreviewBox = styled.div`
   width: 70%;
   height: 300px;
   border: 2px solid #fff;
-  border-radius: 50px;
+  border-radius: 60px;
   margin-bottom: 2rem;
   display: flex;
   align-items: center;
@@ -73,7 +91,7 @@ const PreviewBox = styled.div`
 const PreviewImage = styled.img`
   max-width: 100%;
   max-height: 100%;
-  border-radius: 50px;
+  border-radius: 60px;
 `;
 
 const GenerateButton = styled.button`
