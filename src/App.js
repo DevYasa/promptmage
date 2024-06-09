@@ -1,20 +1,25 @@
 // src/App.js
 import React from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { GlobalStyles } from './styles/GlobalStyles';
 import Header from './components/Header';
 import Hero from './components/Hero';
 import Footer from './components/Footer';
+import GeneratePage from './pages/GeneratePage';
 
 function App() {
   return (
-    <>
+    <Router>
       <GlobalStyles />
       <div className="main-container">
         <Header />
-        <Hero />
+        <Routes>
+          <Route path="/" element={<Hero />} />
+          <Route path="/generate" element={<GeneratePage />} />
+        </Routes>
         <Footer />
       </div>
-    </>
+    </Router>
   );
 }
 

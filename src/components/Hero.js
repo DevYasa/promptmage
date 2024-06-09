@@ -1,10 +1,29 @@
 // src/components/Hero.js
 import React from 'react';
-import styled from 'styled-components';
-import robotImage from '../assets/images/her_img.png'; // Ensure this image path is correct
+import { useNavigate } from 'react-router-dom';
+import styled, { keyframes } from 'styled-components';
+import robotImage from '../assets/images/her2.png'; // Ensure this image path is correct
 import { flicker } from '../styles/GlobalStyles'; // Import the flicker animation
 
+// Define the keyframes for the enter animation
+const enterAnimation = keyframes`
+  0% {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+`;
+
 const Hero = () => {
+  const navigate = useNavigate();
+
+  const handleExploreNowClick = () => {
+    navigate('/generate');
+  };
+
   return (
     <HeroSection>
       <TextContainer>
@@ -17,7 +36,7 @@ const Hero = () => {
           from your text prompts
         </Subtitle>
         <ButtonContainer>
-          <ExploreButton primary>Explore Now</ExploreButton>
+          <ExploreButton primary onClick={handleExploreNowClick}>Explore Now</ExploreButton>
         </ButtonContainer>
       </TextContainer>
       <ImageContainer>
@@ -51,6 +70,7 @@ const Title = styled.h1`
   font-family: 'Alpha', sans-serif;
   line-height: 0.6; /* Adjust this value to reduce space between lines */
   text-align: left;
+  animation: ${enterAnimation} 1s ease-out; /* Apply the animation */
 
   .welcome {
     display: inline-block;
@@ -61,7 +81,8 @@ const Title = styled.h1`
     font-size: 6rem;
     font-family: 'AristaPro', sans-serif;
     display: inline-block;
-    transform: translateX(10%); }
+    transform: translateX(10%);
+  }
 `;
 
 const Subtitle = styled.p`
@@ -69,6 +90,17 @@ const Subtitle = styled.p`
   margin: 3rem 0 1rem; /* Adjust the top margin to create space */
   text-align: left;
   transform: translateX(32%);
+  position: relative;
+
+  &::before {
+    content: '→'; /* Arrow symbol */
+    font-size: 3rem; /* Adjust as needed */
+    color: #28a745; /* Arrow color */
+    position: absolute;
+    left: -4rem; /* Adjust this value to position the arrow */
+    top: 20%;
+    transform: translateY(-50%);
+  }
 `;
 
 const ButtonContainer = styled.div`
