@@ -17,6 +17,22 @@ const enterAnimation = keyframes`
   }
 `;
 
+// Define the keyframes for the light animation
+const lightAnimation = keyframes`
+  0% {
+    opacity: 0.5;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.5);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(2);
+  }
+`;
+
 const Hero = () => {
   const navigate = useNavigate();
 
@@ -146,6 +162,20 @@ const HeroImage = styled.img`
   max-width: 80%; /* Adjust this value to reduce the gap */
   height: auto;
   animation: ${flicker} 1.5s infinite; /* Apply the flicker animation */
+  position: relative; /* Ensure the pseudo-element is positioned correctly */
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: 20%; /* Adjust to position the light effect */
+    left: 20%; /* Adjust to position the light effect */
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.5);
+    animation: ${lightAnimation} 2s infinite; /* Apply the light animation */
+    pointer-events: none; /* Ensure the light effect does not interfere with mouse events */
+  }
 `;
 
 export default Hero;

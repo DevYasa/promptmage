@@ -1,19 +1,34 @@
-// src/pages/GeneratePage.js
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import previewImage from '../assets/images/ai_gen.png'; // Ensure this image path is correct
 import Typewriter from '../components/TypeWriter';
 
 const GeneratePage = () => {
+  const [isFocused, setIsFocused] = useState(false);
+
+  const handleFocus = () => {
+    setIsFocused(true);
+  };
+
+  const handleBlur = () => {
+    setIsFocused(false);
+  };
+
   return (
     <PageContainer>
       <Title>Generate Your Image</Title>
       <Form>
         <TextFieldContainer>
-          <TypewriterText>
-            <Typewriter text="Enter your text here..." />
-          </TypewriterText>
-          <TextField type="text" />
+          {!isFocused && (
+            <TypewriterText>
+              <Typewriter text="Enter your text here..." />
+            </TypewriterText>
+          )}
+          <TextField
+            type="text"
+            onFocus={handleFocus}
+            onBlur={handleBlur}
+          />
         </TextFieldContainer>
         <PreviewBox>
           <PreviewImage src={previewImage} alt="Preview" />
