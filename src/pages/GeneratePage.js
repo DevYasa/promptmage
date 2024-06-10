@@ -16,7 +16,10 @@ const GeneratePage = () => {
         prompt: inputText,
       });
       console.log('Response from backend:', response.data);
-      const fullImageUrl = `http://localhost:3001${response.data.image_url}`;
+
+      // Adjust how you extract the image_url
+      const imageUrl = response.data.image_url.image_url || response.data.image_url;
+      const fullImageUrl = `http://localhost:3001${imageUrl}`;
       setGeneratedImage(fullImageUrl);
       console.log('Generated Image URL:', fullImageUrl);
     } catch (error) {
@@ -46,7 +49,7 @@ const GeneratePage = () => {
           {loading ? (
             <LoadingText>Loading...</LoadingText>
           ) : generatedImage ? (
-            <PreviewImage src={generatedImage} alt="Generated" />
+            <PreviewImage src={generatedImage} alt="Generated" onError={() => console.log('Failed to load image')} />
           ) : (
             <PreviewImage src={previewImage} alt="Preview" />
           )}
