@@ -1,17 +1,29 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import previewImage from '../assets/images/ai_gen.png'; // Ensure this image path is correct
+import axios from 'axios'; // Import axios
 import Typewriter from '../components/TypeWriter';
+import previewImage from '../assets/images/ai_gen.png'; // Ensure this image path is correct
 
 const GeneratePage = () => {
-  const [isFocused, setIsFocused] = useState(false);
+  const [inputText, setInputText] = useState('');
+  const [generatedImage, setGeneratedImage] = useState(null);
+  const [loading, setLoading] = useState(false);
 
-  const handleFocus = () => {
-    setIsFocused(true);
-  };
-
-  const handleBlur = () => {
-    setIsFocused(false);
+  const handleGenerateClick = async () => {
+    setLoading(true);
+    try {
+      const response = await axios.post('http://localhost:3001/api/generate-image', {
+        prompt: inputText,
+      });
+      console.log('Response from backend:', response.data);
+      const fullImageUrl = `http://localhost:3001${response.data.image_url}`;
+      setGeneratedImage(fullImageUrl);
+      console.log('Generated Image URL:', fullImageUrl);
+    } catch (error) {
+      console.error('Error generating image:', error);
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -19,21 +31,29 @@ const GeneratePage = () => {
       <Title>Generate Your Image</Title>
       <Form>
         <TextFieldContainer>
-          {!isFocused && (
+          {!inputText && (
             <TypewriterText>
               <Typewriter text="Enter your text here..." />
             </TypewriterText>
           )}
           <TextField
             type="text"
-            onFocus={handleFocus}
-            onBlur={handleBlur}
+            value={inputText}
+            onChange={(e) => setInputText(e.target.value)}
           />
         </TextFieldContainer>
         <PreviewBox>
-          <PreviewImage src={previewImage} alt="Preview" />
+          {loading ? (
+            <LoadingText>Loading...</LoadingText>
+          ) : generatedImage ? (
+            <PreviewImage src={generatedImage} alt="Generated" />
+          ) : (
+            <PreviewImage src={previewImage} alt="Preview" />
+          )}
         </PreviewBox>
-        <GenerateButton>Generate</GenerateButton>
+        <GenerateButton type="button" onClick={handleGenerateClick}>
+          Generate
+        </GenerateButton>
       </Form>
     </PageContainer>
   );
@@ -107,6 +127,11 @@ const PreviewImage = styled.img`
   max-width: 100%;
   max-height: 100%;
   border-radius: 60px;
+`;
+
+const LoadingText = styled.div`
+  color: #fff;
+  font-size: 1.5rem;
 `;
 
 const GenerateButton = styled.button`

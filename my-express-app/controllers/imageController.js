@@ -6,9 +6,16 @@ exports.generateImage = async (req, res) => {
     console.log('Received request to generate image with prompt:', prompt);
     const imageData = await generateImageFromText(prompt);
     console.log('Generated image data:', imageData);
-    res.json({ image_url: imageData.images ? imageData.images[0].url : 'default_image_url' }); // Adjust based on the actual response structure
+
+    // Check if image URL is correctly formatted as a string
+    if (imageData && typeof imageData === 'object' && 'image_url' in imageData) {
+      res.json({ image_url: imageData.image_url });
+    } else {
+      console.error('Unexpected response structure:', imageData);
+      throw new Error('No image generated');
+    }
   } catch (error) {
     console.error('Error generating image:', error.message);
-    res.status(500).json({ error: 'Error generating image' });
+    res.status(500).json({ error: error.message });
   }
 };

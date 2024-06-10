@@ -1,9 +1,11 @@
 const express = require('express');
 const app = express();
+const cors = require('cors');
 const port = 3001;
 
 const imageRoutes = require('./routes/imageRoutes');
 
+app.use(cors()); // Enable CORS for all routes
 app.use(express.json()); // Middleware to parse JSON bodies
 
 app.use('/api', imageRoutes);
