@@ -4,7 +4,7 @@ const path = require('path');
 const { v4: uuidv4 } = require('uuid');
 
 const generateImageFromText = async (prompt) => {
-  const apiKey = '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'; // Replace with your Hugging Face API key
+  const apiKey = ''; // Replace with your Hugging Face API key
   const modelId = 'CompVis/stable-diffusion-v1-4'; // Use the advanced model ID
 
   try {
