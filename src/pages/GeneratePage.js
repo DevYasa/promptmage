@@ -17,9 +17,7 @@ const GeneratePage = () => {
       });
       console.log('Response from backend:', response.data);
 
-      // Adjust how you extract the image_url
-      const imageUrl = response.data.image_url.image_url || response.data.image_url;
-      const fullImageUrl = `http://localhost:3001${imageUrl}`;
+      const fullImageUrl = `http://localhost:3001${response.data.image_url}`;
       setGeneratedImage(fullImageUrl);
       console.log('Generated Image URL:', fullImageUrl);
     } catch (error) {
@@ -116,8 +114,8 @@ const TextField = styled.input`
 `;
 
 const PreviewBox = styled.div`
-  width: 70%;
-  height: 300px;
+  width: 80%;
+  height: 325px;
   border: 2px solid #fff;
   border-radius: 60px;
   margin-bottom: 2rem;
@@ -127,8 +125,9 @@ const PreviewBox = styled.div`
 `;
 
 const PreviewImage = styled.img`
-  max-width: 100%;
-  max-height: 100%;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
   border-radius: 60px;
 `;
 
