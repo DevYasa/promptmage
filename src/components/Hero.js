@@ -2,7 +2,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import styled, { keyframes } from 'styled-components';
-import robotImage from '../assets/images/her2.png'; // Ensure this image path is correct
+import robotImage from '../assets/images/her.png'; // Ensure this image path is correct
 import { flicker } from '../styles/GlobalStyles'; // Import the flicker animation
 
 // Define the keyframes for the enter animation
@@ -66,7 +66,7 @@ const HeroSection = styled.section`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 3rem;
+  padding: 1rem;
   width: 100%;
 `;
 
@@ -159,9 +159,9 @@ const ImageContainer = styled.div`
 `;
 
 const HeroImage = styled.img`
-  max-width: 80%; /* Adjust this value to reduce the gap */
+  max-width: 90%; /* Adjust this value to reduce the gap */
   height: auto;
-  animation: ${flicker} 1.5s infinite; /* Apply the flicker animation */
+  animation: ${flicker} 1.2s infinite; /* Apply the flicker animation */
   position: relative; /* Ensure the pseudo-element is positioned correctly */
 
   &::after {
