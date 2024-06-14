@@ -4,8 +4,8 @@ import { createGlobalStyle, keyframes } from 'styled-components';
 // Define the keyframes for the flicker animation
 const flicker = keyframes`
   0%, 100% { opacity: 1; transform: translateY(0); }
-  50% { opacity: 0.6; transform: translateY(-2px); }
-  25%, 75% { opacity: 0.8; transform: translateY(1px); }
+  50% { opacity: 0.6; transform: translateY(0px); }
+  25%, 75% { opacity: 0.8; transform: translateY(2px); }
 `;
 
 const GlobalStyles = createGlobalStyle`
@@ -41,6 +41,12 @@ const GlobalStyles = createGlobalStyle`
     align-items: center;
     height: 100vh;
     color: #ffffff;
+
+    @media (max-width: 768px) {
+      background-size: contain;
+      height: auto;
+      padding: 1rem;
+    }
   }
 
   #root {
@@ -49,15 +55,23 @@ const GlobalStyles = createGlobalStyle`
     display: flex;
     flex-direction: column;
     align-items: center;
+
+    @media (max-width: 768px) {
+      height: auto;
+    }
   }
 
   .main-container {
     width: 100%;
-    max-width: 1200px; /* Adjust as needed */
+    max-width: 1600px; /* Adjust as needed */
     padding: 2rem;
     display: flex;
     flex-direction: column;
     align-items: center;
+
+    @media (max-width: 768px) {
+      padding: 1rem;
+    }
   }
 `;
 

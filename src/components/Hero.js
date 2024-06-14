@@ -50,25 +50,36 @@ const HeroSection = styled.section`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem;
   width: 100%;
+  height: auto;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    padding: 0.5rem;
+  }
 `;
 
 const TextContainer = styled.div`
   flex: 1;
-  max-width: 650px; /* Adjust as needed */
+  max-width: 800px; /* Adjust as needed */
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   text-align: left;
-  margin-right: 1rem; /* Reduce this value to decrease the gap */
+  margin-right: 0rem; /* Reduce this value to decrease the gap */
+
+  @media (max-width: 768px) {
+    align-items: center;
+    text-align: center;
+    margin-right: 0;
+  }
 `;
 
 const Title = styled.h1`
-  font-size: 9.5rem; /* Adjust as needed */
+  font-size: 12rem; /* Adjust as needed */
   margin: 0;
   font-family: 'Alpha', sans-serif;
-  line-height: 0.6; /* Adjust this value to reduce space between lines */
+  line-height: 0.5; /* Adjust this value to reduce space between lines */
   text-align: left;
   animation: ${enterAnimation} 1s ease-out; /* Apply the animation */
 
@@ -78,15 +89,24 @@ const Title = styled.h1`
   }
 
   .highlight {
-    font-size: 6rem;
+    font-size: 7.5rem;
     font-family: 'AristaPro', sans-serif;
     display: inline-block;
     transform: translateX(10%);
   }
+
+  @media (max-width: 768px) {
+    font-size: 6rem; /* Adjust as needed */
+    text-align: center;
+
+    .highlight {
+      font-size: 4rem;
+    }
+  }
 `;
 
 const Subtitle = styled.p`
-  font-size: 1.8rem; /* Adjust as needed */
+  font-size: 2rem; /* Adjust as needed */
   margin: 3rem 0 1rem; /* Adjust the top margin to create space */
   text-align: left;
   transform: translateX(32%);
@@ -101,6 +121,16 @@ const Subtitle = styled.p`
     top: 20%;
     transform: translateY(-50%);
   }
+
+  @media (max-width: 768px) {
+    font-size: 1.2rem; /* Adjust as needed */
+    text-align: center;
+    transform: translateX(0);
+
+    &::before {
+      display: none; /* Hide the arrow on mobile */
+    }
+  }
 `;
 
 const ButtonContainer = styled.div`
@@ -109,10 +139,15 @@ const ButtonContainer = styled.div`
   width: 100%;
   margin-top: 1.5rem;
   transform: translateX(40%);
+
+  @media (max-width: 768px) {
+    justify-content: center;
+    transform: translateX(0);
+  }
 `;
 
 const ExploreButton = styled.button`
-  padding: 0.75rem 1.5rem;
+  padding: 1rem 1.75rem;
   font-size: 1rem;
   color: #fff;
   background-color: #28a745; /* Adjust to the desired color */
@@ -132,6 +167,11 @@ const ExploreButton = styled.button`
     content: '→'; /* Arrow symbol */
     margin-left: 0.5rem;
   }
+
+  @media (max-width: 768px) {
+    padding: 0.6rem 1.2rem;
+    font-size: 0.9rem;
+  }
 `;
 
 const ImageContainer = styled.div`
@@ -140,10 +180,15 @@ const ImageContainer = styled.div`
   justify-content: flex-end; /* Move image to the right */
   align-items: center;
   padding-left: 0rem; /* Reduce this value to decrease the gap */
+
+  @media (max-width: 768px) {
+    justify-content: center;
+    padding-left: 0;
+  }
 `;
 
 const HeroImage = styled.img`
-  max-width: 90%; /* Adjust this value to reduce the gap */
+  max-width: 85%; /* Adjust this value to reduce the gap */
   height: auto;
   animation: ${flicker} 1.2s infinite; /* Apply the flicker animation */
   position: relative; /* Ensure the pseudo-element is positioned correctly */
@@ -158,6 +203,10 @@ const HeroImage = styled.img`
     border-radius: 50%;
     background: rgba(255, 255, 255, 0.5);
     pointer-events: none; /* Ensure the light effect does not interfere with mouse events */
+  }
+
+  @media (max-width: 768px) {
+    max-width: 100%;
   }
 `;
 

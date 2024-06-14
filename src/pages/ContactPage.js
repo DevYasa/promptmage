@@ -89,30 +89,46 @@ const PageContainer = styled.div`
   align-items: flex-start;
   justify-content: space-between;
   margin-top: 3rem;
-  margin-left: 6.5rem;
-  margin-bottom: 6rem;
-  height: 60vh;
+  margin-left: 1rem;
+  margin-bottom: 3.5rem;
+  height: auto;
   color: #fff;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    align-items: center;
+    margin-left: 0;
+    margin-right: 0;
+  }
 `;
 
 const FormContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  padding-right: 3.5rem;
-  padding-left: 3.5rem;
+  padding: 4rem;
   border-radius: 15px;
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
   width: 100%;
-  max-width: 350px;
+  max-width: 400px;
+
+  @media (max-width: 768px) {
+    padding: 1rem;
+    max-width: 100%;
+  }
 `;
 
 const FormTitle = styled.h1`
   font-size: 2.5rem;
   margin-bottom: 1rem;
-  margin-left: 4rem;
+  margin-left: 6rem;
   font-family: 'Poppins', sans-serif;
   color: #fff;
+
+  @media (max-width: 768px) {
+    font-size: 2rem;
+    text-align: center;
+  }
 `;
 
 const Form = styled.form`
@@ -141,7 +157,7 @@ const InputWrapper = styled.div`
 const Input = styled.input`
   width: 100%;
   padding: 0.8rem 0.8rem 0.8rem 3rem;
-  font-size: 0.7rem;
+  font-size: 1rem;
   border: 2px solid #fff;
   border-radius: 25px;
   background: transparent;
@@ -151,12 +167,12 @@ const Input = styled.input`
 const Textarea = styled.textarea`
   width: 100%;
   padding: 1rem 1rem 1rem 3rem;
-  font-size: 0.7rem;
+  font-size: 1rem;
   border: 2px solid #fff;
   border-radius: 25px;
   background: transparent;
   color: #fff;
-  height: 110px;
+  height: 120px;
   resize: none;
 `;
 
@@ -196,15 +212,23 @@ const ImageContainer = styled.div`
   justify-content: center;
   align-items: center;
   padding-left: 4rem;
+  padding-top: 7rem;
+
+  @media (max-width: 768px) {
+    margin-top: 2rem;
+    padding-left: 0;
+  }
 `;
 
 const ContactImage = styled.img`
-  margin-top: 5rem;
   max-width: 70%;
   height: auto;
   border-radius: 15px;
   animation: ${pulse} 2s infinite;
+
+  @media (max-width: 768px) {
+    max-width: 100%;
+  }
 `;
 
 export default ContactPage;
-

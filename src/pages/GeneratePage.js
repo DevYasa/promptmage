@@ -1,9 +1,10 @@
+// src/pages/GeneratePage.js
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import axios from 'axios'; // Import axios
-import { FaDownload } from 'react-icons/fa'; // Import download icon
+import axios from 'axios';
+import { FaDownload } from 'react-icons/fa';
 import Typewriter from '../components/TypeWriter';
-import previewImage from '../assets/images/ai_gen.png'; // Ensure this image path is correct
+import previewImage from '../assets/images/ai_gen.png';
 
 const GeneratePage = () => {
   const [inputText, setInputText] = useState('');
@@ -86,12 +87,22 @@ const PageContainer = styled.div`
   background-size: cover;
   background-position: center;
   color: #fff;
+
+  @media (max-width: 768px) {
+    height: auto;
+    padding: 1rem;
+  }
 `;
 
 const Title = styled.h1`
   font-size: 2.8rem;
   margin-bottom: 2rem;
   font-family: 'Poppins', sans-serif;
+
+  @media (max-width: 768px) {
+    font-size: 2.2rem;
+    text-align: center;
+  }
 `;
 
 const Form = styled.form`
@@ -100,13 +111,21 @@ const Form = styled.form`
   align-items: center;
   width: 100%;
   max-width: 600px;
+
+  @media (max-width: 768px) {
+    max-width: 100%;
+    padding: 0 1rem;
+  }
 `;
 
 const TextFieldContainer = styled.div`
   position: relative;
   width: 70%;
   margin-bottom: 2rem;
-  margin-left: -30px;
+
+  @media (max-width: 768px) {
+    width: 100%;
+  }
 `;
 
 const TypewriterText = styled.div`
@@ -139,6 +158,12 @@ const PreviewBox = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+
+  @media (max-width: 768px) {
+    width: 100%;
+    height: auto;
+    border-radius: 30px;
+  }
 `;
 
 const PreviewImageContainer = styled.div`
@@ -152,6 +177,10 @@ const PreviewImage = styled.img`
   height: 100%;
   object-fit: cover;
   border-radius: 60px;
+
+  @media (max-width: 768px) {
+    border-radius: 30px;
+  }
 `;
 
 const DownloadIcon = styled.div`
@@ -187,6 +216,12 @@ const GenerateButton = styled.button`
 
   &:hover {
     background-color: #218838;
+  }
+
+  @media (max-width: 768px) {
+    padding: 0.6rem 1.2rem;
+    font-size: 0.9rem;
+    margin-bottom: 4rem;
   }
 `;
 

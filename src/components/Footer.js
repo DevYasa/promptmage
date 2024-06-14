@@ -12,9 +12,13 @@ const Footer = () => {
 
 const FooterContainer = styled.footer`
   width: 100%;
-  padding: 0rem 0rem;
+  padding: 1rem;
   background-color: transparent;
   text-align: center;
+
+  @media (max-width: 768px) {
+    padding: 0.5rem;
+  }
 `;
 
 const FooterText = styled.p`
