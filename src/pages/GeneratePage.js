@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import axios from 'axios'; // Import axios
+import { FaDownload } from 'react-icons/fa'; // Import download icon
 import Typewriter from '../components/TypeWriter';
 import previewImage from '../assets/images/ai_gen.png'; // Ensure this image path is correct
 
@@ -27,6 +28,17 @@ const GeneratePage = () => {
     }
   };
 
+  const handleDownloadClick = () => {
+    if (generatedImage) {
+      const link = document.createElement('a');
+      link.href = generatedImage;
+      link.download = 'generated_image.png';
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    }
+  };
+
   return (
     <PageContainer>
       <Title>Generate Your Image</Title>
@@ -47,7 +59,12 @@ const GeneratePage = () => {
           {loading ? (
             <LoadingText>Loading...</LoadingText>
           ) : generatedImage ? (
-            <PreviewImage src={generatedImage} alt="Generated" onError={() => console.log('Failed to load image')} />
+            <PreviewImageContainer>
+              <PreviewImage src={generatedImage} alt="Generated" onError={() => console.log('Failed to load image')} />
+              <DownloadIcon onClick={handleDownloadClick}>
+                <FaDownload />
+              </DownloadIcon>
+            </PreviewImageContainer>
           ) : (
             <PreviewImage src={previewImage} alt="Preview" />
           )}
@@ -124,11 +141,32 @@ const PreviewBox = styled.div`
   justify-content: center;
 `;
 
+const PreviewImageContainer = styled.div`
+  position: relative;
+  width: 100%;
+  height: 100%;
+`;
+
 const PreviewImage = styled.img`
   width: 100%;
   height: 100%;
   object-fit: cover;
   border-radius: 60px;
+`;
+
+const DownloadIcon = styled.div`
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  background: rgba(0, 0, 0, 0.5);
+  padding: 10px;
+  border-radius: 50%;
+  cursor: pointer;
+  color: #fff;
+
+  &:hover {
+    background: rgba(0, 0, 0, 0.7);
+  }
 `;
 
 const LoadingText = styled.div`

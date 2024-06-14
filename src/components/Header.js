@@ -11,12 +11,16 @@ const Header = () => {
     navigate('/');
   };
 
+  const handleNavClick = (path) => {
+    navigate(path);
+  };
+
   return (
     <Nav>
-      <Logo src={promptLogo} alt="PromptMage Logo" onClick={handleLogoClick} /> {/* Update the logo path */}
+      <Logo src={promptLogo} alt="PromptMage Logo" onClick={handleLogoClick} />
       <NavMenu>
-        <NavItem href="#">Login</NavItem>
-        <SignUpItem href="#">Sign Up</SignUpItem> {/* Updated */}
+        <NavButton onClick={() => handleNavClick('/')}>Home</NavButton>
+        <NavButton onClick={() => handleNavClick('/contact')}>Contact</NavButton>
       </NavMenu>
     </Nav>
   );
@@ -40,30 +44,31 @@ const NavMenu = styled.div`
   gap: 1rem;
 `;
 
-const Button = styled.a`
+const NavButton = styled.button`
   color: #fff;
+  background-color: #28a745;
   text-decoration: none;
   padding: 0.5rem 1.5rem;
+  border: none;
   border-radius: 25px;
   font-size: 1rem;
   transition: background-color 0.3s ease;
   display: flex;
   align-items: center;
   justify-content: center;
-`;
+  cursor: pointer;
 
-const NavItem = styled(Button)`
-  background-color: #28a745;
   &:hover {
     background-color: #218838;
   }
-`;
 
-const SignUpItem = styled(Button)`
-  background-color: transparent; /* New color for Sign Up */
-  border: 2px solid #fff; /* White border */
-  &:hover {
-    background-color: #5a59a8; /* New hover color for Sign Up */
+  &:last-child {
+    background-color: transparent;
+    border: 2px solid #fff;
+
+    &:hover {
+      background-color: #5a59a8;
+    }
   }
 `;
 
