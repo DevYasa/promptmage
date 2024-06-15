@@ -3,9 +3,11 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import promptLogo from '../assets/images/prompt.png';
+import useWindowSize from '../hooks/useWindowSize';
 
 const Header = () => {
   const navigate = useNavigate();
+  const { width } = useWindowSize();
 
   const handleLogoClick = () => {
     navigate('/');
@@ -22,6 +24,7 @@ const Header = () => {
         <NavButton onClick={() => handleNavClick('/')}>Home</NavButton>
         <NavButton onClick={() => handleNavClick('/contact')}>Contact</NavButton>
       </NavMenu>
+      {width <= 768 && <MobileNav />}
     </Nav>
   );
 };
@@ -31,21 +34,20 @@ const Nav = styled.nav`
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  padding: 0rem;
+  padding: 0rem 0.5rem;
 
   @media (max-width: 768px) {
     flex-direction: column;
-    align-items: center;
     padding: 0.5rem;
   }
 `;
 
 const Logo = styled.img`
-  height: 120px; /* Adjust as needed */
+  height: 90px; /* Adjust as needed */
   cursor: pointer; /* Add pointer cursor */
 
   @media (max-width: 768px) {
-    height: 50px;
+    height: 70px;
     margin-bottom: 0.5rem;
   }
 `;
@@ -56,8 +58,6 @@ const NavMenu = styled.div`
 
   @media (max-width: 768px) {
     gap: 0.5rem;
-    flex-direction: column;
-    align-items: center;
   }
 `;
 
@@ -65,7 +65,7 @@ const NavButton = styled.button`
   color: #fff;
   background-color: #28a745;
   text-decoration: none;
-  padding: 1rem 2rem;
+  padding: 0.5rem 1.5rem;
   border: none;
   border-radius: 25px;
   font-size: 1rem;
@@ -92,6 +92,10 @@ const NavButton = styled.button`
     padding: 0.3rem 1rem;
     font-size: 0.9rem;
   }
+`;
+
+const MobileNav = styled.div`
+  /* Add any additional styles for the mobile nav here */
 `;
 
 export default Header;

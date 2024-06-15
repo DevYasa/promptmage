@@ -1,28 +1,30 @@
 // src/App.js
 import React from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import { GlobalStyles } from './styles/GlobalStyles';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import {GlobalStyles} from './styles/GlobalStyles';
 import Header from './components/Header';
-import Hero from './components/Hero';
 import Footer from './components/Footer';
-import GeneratePage from './pages/GeneratePage';
+import Hero from './components/Hero';
 import ContactPage from './pages/ContactPage';
+import GeneratePage from './pages/GeneratePage';
 
-function App() {
+const App = () => {
   return (
-    <Router>
+    <>
       <GlobalStyles />
-      <div className="main-container">
-        <Header />
-        <Routes>
-          <Route path="/" element={<Hero />} />
-          <Route path="/generate" element={<GeneratePage />} />
-          <Route path="/contact" element={<ContactPage />} />
-        </Routes>
-        <Footer />
-      </div>
-    </Router>
+      <Router>
+        <div className="main-container">
+          <Header />
+          <Routes>
+            <Route path="/" element={<Hero />} />
+            <Route path="/contact" element={<ContactPage />} />
+            <Route path="/generate" element={<GeneratePage />} />
+          </Routes>
+          <Footer />
+        </div>
+      </Router>
+    </>
   );
-}
+};
 
 export default App;

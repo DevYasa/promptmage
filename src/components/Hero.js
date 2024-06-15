@@ -48,6 +48,8 @@ const Hero = () => {
 
 const HeroSection = styled.section`
   display: flex;
+  padding: 1rem;
+  padding-bottom: 2.5rem;
   justify-content: space-between;
   align-items: center;
   width: 100%;
@@ -76,7 +78,7 @@ const TextContainer = styled.div`
 `;
 
 const Title = styled.h1`
-  font-size: 12rem; /* Adjust as needed */
+  font-size: 11rem; /* Adjust as needed */
   margin: 0;
   font-family: 'Alpha', sans-serif;
   line-height: 0.5; /* Adjust this value to reduce space between lines */
@@ -89,7 +91,7 @@ const Title = styled.h1`
   }
 
   .highlight {
-    font-size: 7.5rem;
+    font-size: 6.5rem;
     font-family: 'AristaPro', sans-serif;
     display: inline-block;
     transform: translateX(10%);
@@ -107,7 +109,7 @@ const Title = styled.h1`
 
 const Subtitle = styled.p`
   font-size: 2rem; /* Adjust as needed */
-  margin: 3rem 0 1rem; /* Adjust the top margin to create space */
+  margin: 4rem 0 1rem; /* Adjust the top margin to create space */
   text-align: left;
   transform: translateX(32%);
   position: relative;
@@ -188,7 +190,7 @@ const ImageContainer = styled.div`
 `;
 
 const HeroImage = styled.img`
-  max-width: 85%; /* Adjust this value to reduce the gap */
+  max-width: 90%; /* Adjust this value to reduce the gap */
   height: auto;
   animation: ${flicker} 1.2s infinite; /* Apply the flicker animation */
   position: relative; /* Ensure the pseudo-element is positioned correctly */

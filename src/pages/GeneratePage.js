@@ -121,6 +121,7 @@ const Form = styled.form`
 const TextFieldContainer = styled.div`
   position: relative;
   width: 70%;
+  margin-right: 2rem;
   margin-bottom: 2rem;
 
   @media (max-width: 768px) {

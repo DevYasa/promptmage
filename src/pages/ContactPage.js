@@ -2,7 +2,8 @@
 import React, { useState } from 'react';
 import styled, { keyframes } from 'styled-components';
 import { FaUser, FaEnvelope, FaPhone, FaPaperPlane } from 'react-icons/fa';
-import contactImage from '../assets/images/conta.png'; // Make sure the path to your image is correct
+import contactImage from '../assets/images/conta.png';
+import useWindowSize from '../hooks/useWindowSize';
 
 const ContactPage = () => {
   const [formData, setFormData] = useState({
@@ -11,6 +12,8 @@ const ContactPage = () => {
     phone: '',
     message: ''
   });
+
+  const { width } = useWindowSize();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -77,9 +80,11 @@ const ContactPage = () => {
           <SubmitButton type="submit">Submit</SubmitButton>
         </Form>
       </FormContainer>
-      <ImageContainer>
-        <ContactImage src={contactImage} alt="Contact Us" />
-      </ImageContainer>
+      {width > 768 && (
+        <ImageContainer>
+          <ContactImage src={contactImage} alt="Contact Us" />
+        </ImageContainer>
+      )}
     </PageContainer>
   );
 };
@@ -89,16 +94,16 @@ const PageContainer = styled.div`
   align-items: flex-start;
   justify-content: space-between;
   margin-top: 3rem;
-  margin-left: 1rem;
-  margin-bottom: 3.5rem;
-  height: auto;
+  margin-left: 6.5rem;
+  margin-bottom: 9rem;
+  height: 60vh;
   color: #fff;
 
   @media (max-width: 768px) {
     flex-direction: column;
     align-items: center;
-    margin-left: 0;
-    margin-right: 0;
+    margin-left: 1rem;
+    margin-right: 1rem;
   }
 `;
 
@@ -106,15 +111,15 @@ const FormContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  padding: 4rem;
+  padding-right: 3.5rem;
+  padding-left: 3.5rem;
   border-radius: 15px;
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
   width: 100%;
   max-width: 400px;
 
   @media (max-width: 768px) {
-    padding: 1rem;
-    max-width: 100%;
+    padding: 2rem;
   }
 `;
 
@@ -126,8 +131,8 @@ const FormTitle = styled.h1`
   color: #fff;
 
   @media (max-width: 768px) {
-    font-size: 2rem;
     text-align: center;
+    margin-left: 0;
   }
 `;
 
@@ -156,8 +161,9 @@ const InputWrapper = styled.div`
 
 const Input = styled.input`
   width: 100%;
-  padding: 0.8rem 0.8rem 0.8rem 3rem;
+  padding: 1rem 1rem 1rem 3rem;
   font-size: 1rem;
+  font-family: 'Poppins', sans-serif;
   border: 2px solid #fff;
   border-radius: 25px;
   background: transparent;
@@ -166,13 +172,14 @@ const Input = styled.input`
 
 const Textarea = styled.textarea`
   width: 100%;
+  font-family: 'Poppins', sans-serif;
   padding: 1rem 1rem 1rem 3rem;
   font-size: 1rem;
   border: 2px solid #fff;
   border-radius: 25px;
   background: transparent;
   color: #fff;
-  height: 120px;
+  height: 150px;
   resize: none;
 `;
 
@@ -212,22 +219,22 @@ const ImageContainer = styled.div`
   justify-content: center;
   align-items: center;
   padding-left: 4rem;
-  padding-top: 7rem;
 
   @media (max-width: 768px) {
-    margin-top: 2rem;
     padding-left: 0;
+    margin-top: 2rem;
   }
 `;
 
 const ContactImage = styled.img`
+  margin-top: 5rem;
   max-width: 70%;
   height: auto;
   border-radius: 15px;
   animation: ${pulse} 2s infinite;
 
   @media (max-width: 768px) {
-    max-width: 100%;
+    margin-top: 0;
   }
 `;
 

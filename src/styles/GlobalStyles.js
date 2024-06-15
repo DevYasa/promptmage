@@ -63,7 +63,7 @@ const GlobalStyles = createGlobalStyle`
 
   .main-container {
     width: 100%;
-    max-width: 1600px; /* Adjust as needed */
+    max-width: 1450px; /* Adjust as needed */
     padding: 2rem;
     display: flex;
     flex-direction: column;
