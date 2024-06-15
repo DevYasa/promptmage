@@ -1,9 +1,9 @@
-// src/pages/ContactPage.js
 import React, { useState } from 'react';
 import styled, { keyframes } from 'styled-components';
 import { FaUser, FaEnvelope, FaPhone, FaPaperPlane } from 'react-icons/fa';
 import contactImage from '../assets/images/conta.png';
 import useWindowSize from '../hooks/useWindowSize';
+import axios from 'axios';
 
 const ContactPage = () => {
   const [formData, setFormData] = useState({
@@ -23,10 +23,17 @@ const ContactPage = () => {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Handle form submission, e.g., send the data to your backend
     console.log('Form submitted:', formData);
+    try {
+      const response = await axios.post('http://localhost:3001/api/contact', formData);
+      console.log('Response:', response.data);
+      alert('Contact information saved successfully.');
+    } catch (error) {
+      console.error('Error submitting contact form:', error);
+      alert('An error occurred while submitting the contact form.');
+    }
   };
 
   return (

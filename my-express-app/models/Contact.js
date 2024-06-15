@@ -1,12 +1,26 @@
-// models/Contact.js
 const mongoose = require('mongoose');
-const Schema = mongoose.Schema;
 
-const ContactSchema = new Schema({
-  name: { type: String, required: true },
-  email: { type: String, required: true },
-  phone: { type: String, required: true },
-  message: { type: String, required: true },
+const contactSchema = new mongoose.Schema({
+  name: {
+    type: String,
+    required: true,
+  },
+  email: {
+    type: String,
+    required: true,
+  },
+  phone: {
+    type: String,
+    required: true,
+  },
+  message: {
+    type: String,
+    required: true,
+  },
+}, {
+  timestamps: true, // Automatically include createdAt and updatedAt timestamps
 });
 
-module.exports = mongoose.model('Contact', ContactSchema);
+const Contact = mongoose.model('Contact', contactSchema);
+
+module.exports = Contact;
