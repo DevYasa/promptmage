@@ -2,14 +2,14 @@ version: '3.8'
 
 services:
   frontend:
-    build: ./frontend
+    build: ./src
     ports:
-      - "3000:80"
-    depends_on:
-      - backend
+      - "3000:3000"
+    environment:
+      - NODE_ENV=production
 
   backend:
-    build: ./backend
+    build: ./my-express-app
     ports:
       - "3001:3001"
     environment:
