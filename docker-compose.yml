@@ -2,20 +2,22 @@ version: '3.8'
 
 services:
   frontend:
-    build: ./src
+    build:
+      context: ./src
+      dockerfile: Dockerfile
     ports:
       - "3000:3000"
-    environment:
-      - NODE_ENV=production
+    depends_on:
+      - backend
 
   backend:
-    build: ./my-express-app
+    build:
+      context: ./my-express-app
+      dockerfile: Dockerfile
     ports:
       - "3001:3001"
     environment:
-      - MONGO_URI=mongodb://mongo:27017/PromptMage
-    depends_on:
-      - mongo
+      - MONGO_URI=mongodb://mongo:27017/promptmage
 
   mongo:
     image: mongo:latest
