@@ -98,7 +98,7 @@ const Title = styled.h1`
   }
 
   @media (max-width: 768px) {
-    font-size: 6rem; /* Adjust as needed */
+    font-size: 5rem; /* Adjust as needed */
     text-align: center;
 
     .highlight {

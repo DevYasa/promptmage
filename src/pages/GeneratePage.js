@@ -151,8 +151,8 @@ const TextField = styled.input`
 `;
 
 const PreviewBox = styled.div`
-  width: 80%;
-  height: 325px;
+  width: 100%;
+  height: 400px;
   border: 2px solid #fff;
   border-radius: 60px;
   margin-bottom: 2rem;
